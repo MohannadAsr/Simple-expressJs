@@ -22,7 +22,9 @@ app.post('/', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.status(200).send('hi');
+  fs.readFile(`${__dirname}/file.txt`, 'utf-8', (err, data) => {
+    res.status(200).send(data);
+  });
 });
 
 // Start the server
