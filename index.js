@@ -10,6 +10,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Parse application/json
 app.use(bodyParser.json());
 
+// Start the server
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+
 // Your route handling
 app.post('/', (req, res) => {
   console.log(req.body);
@@ -25,9 +30,4 @@ app.get('/', (req, res) => {
   fs.readFile(`${__dirname}/file.txt`, 'utf-8', (err, data) => {
     res.status(200).send(data);
   });
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
 });
